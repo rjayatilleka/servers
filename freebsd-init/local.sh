@@ -52,13 +52,16 @@ bootstrap_target="${bootstrap_user}@${host}"
 primary_target="${primary_user}@${host}"
 
 printf "$tag Copying files\n"
-scp bootstrap.sh setup_primary_home.sh "$bootstrap_target:~"
+scp bootstrap.sh setup_home.sh "$bootstrap_target:~"
 scp "$pub_key_file" "$bootstrap_target:~/authorized_keys"
 
 printf "$tag Running bootstrap.sh\n"
 ssh "$bootstrap_target" "sudo /bin/sh ./bootstrap.sh $primary_user '$primary_name'"
 
-printf "$tag Running setup_primary_home.sh\n"
-ssh "$bootstrap_target" "sudo -u $primary_user /bin/sh /home/$bootstrap_user/setup_primary_home.sh $bootstrap_user"
+printf "$tag Running setup_home.sh\n"
+ssh "$bootstrap_target" "sudo -u $primary_user /bin/sh /home/$bootstrap_user/setup_home.sh $bootstrap_user"
+
+printf "$tag Running setup_env.sh\n"
+ssh "$bootstrap_target" "sudo -u $primary_user /bin/sh" < setup_env.sh
 
 printf "$tag Done.\n"
