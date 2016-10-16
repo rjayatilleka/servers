@@ -16,6 +16,10 @@ printf "$tag Updating pkg...\n"
 pkg update
 pkg upgrade -y pkg
 
+# /usr/local/opt for custom software
+printf "$tag Making /usr/local/opt...\n"
+mkdir -p /usr/local/opt
+
 # Install bash
 printf "$tag Installing bash...\n"
 pkg install -y bash

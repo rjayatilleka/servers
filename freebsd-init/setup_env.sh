@@ -10,7 +10,7 @@ printf "$tag Starting: USER=%s ...\n" "$USER"
 
 # Install packages
 printf "$tag Installing packages...\n"
-sudo pkg install -y git neovim fzf
+sudo pkg install -y git neovim
 
 # Setting up config home
 printf "$tag Setting up .config/...\n"
@@ -30,6 +30,6 @@ printf "$tag Cloning vimrc...\n"
 cd ~/.config
 [ -d nvim ] || git clone https://github.com/rjayatilleka/nvim-config nvim
 cd nvim
-sed -i'' -e "s/^Module 'plugins'\$/\" \\0/" init.vim
+sed -i'' -e "s/^Module 'plugins'\$/Module 'remote'/" init.vim
 
 printf "$tag Done setting up primary env.\n"
