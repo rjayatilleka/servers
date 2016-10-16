@@ -46,7 +46,7 @@ printf "%s\n" "------------------"
 ###############################################################################
 ### Args parsed, here's the code
 
-tag="[init/main]"
+tag="[main]"
 
 bootstrap_target="${bootstrap_user}@${host}"
 primary_target="${primary_user}@${host}"

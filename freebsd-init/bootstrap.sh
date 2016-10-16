@@ -7,7 +7,7 @@ set -o nounset
 user="$1"
 name="$2"
 
-tag="[init/bootstrap]"
+tag="[bootstrap]"
 
 printf "$tag Starting: user=%s name=%s ...\n" "$user" "$name"
 
@@ -39,5 +39,9 @@ chsh -s /usr/local/bin/bash "$user"
 # Authorized keys readable
 printf "$tag Making authorized key file available...\n"
 chmod +r authorized_keys
+
+# Authorized keys readable
+printf "$tag Removing MOTD...\n"
+rm -f /etc/motd
 
 printf "$tag Done with bootstrap.\n"

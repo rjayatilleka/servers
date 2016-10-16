@@ -6,7 +6,7 @@ set -o nounset
 
 bootstrap_user="$1"
 
-tag="[init/setup_primary_home]"
+tag="[setup_primary_home]"
 
 printf "$tag Starting: bootstrap_user=%s USER=%s ...\n" "$bootstrap_user" "$USER"
 
