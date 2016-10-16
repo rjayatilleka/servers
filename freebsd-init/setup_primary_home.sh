@@ -10,14 +10,9 @@ tag="[init/setup_primary_home]"
 
 printf "$tag Starting: bootstrap_user=%s USER=%s ...\n" "$bootstrap_user" "$USER"
 
-printf "$tag Checking current directory is /home/%s...\n" "$USER"
-if pwd | grep -v -q -E "^(/usr)?/home/$USER$"; then
-  printf "$tag ERROR Wrong current directory.\n"
-  exit 1
-fi
-
 # Clean home directory
 printf "$tag Cleaning home directory...\n"
+cd
 rm -rf ./*
 
 # Setup ssh

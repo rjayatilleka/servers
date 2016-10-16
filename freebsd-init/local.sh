@@ -42,19 +42,23 @@ printf "%-16s\t%s\n" \
   "Primary Name" "$primary_name" \
   "Pub key file" "$pub_key_file"
 printf "%s\n" "------------------"
-exit
 
-printf "WOAH"
+###############################################################################
+### Args parsed, here's the code
+
+tag="[init/main]"
 
 bootstrap_target="${bootstrap_user}@${host}"
 primary_target="${primary_user}@${host}"
 
+printf "$tag Copying files\n"
 scp bootstrap.sh setup_primary_home.sh "$bootstrap_target:~"
 scp "$pub_key_file" "$bootstrap_target:~/authorized_keys"
 
-ssh "$bootstrap_target" "sudo /bin/sh ./bootstrap.sh $primary_user $primary_name"
-ssh "$bootstrap_target" "sudo -u $primary_user /bin/sh $bootstrap_user"
+printf "$tag Running bootstrap.sh\n"
+ssh "$bootstrap_target" "sudo /bin/sh ./bootstrap.sh $primary_user '$primary_name'"
 
-# Kill control master 
-ssh -O exit "$bootstrap_target"
-ssh -O exit "$primary_target"
+printf "$tag Running setup_primary_home.sh\n"
+ssh "$bootstrap_target" "sudo -u $primary_user /bin/sh /home/$bootstrap_user/setup_primary_home.sh $bootstrap_user"
+
+printf "$tag Done.\n"

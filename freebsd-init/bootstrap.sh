@@ -19,8 +19,12 @@ pkg upgrade -y pkg
 # Install bash
 printf "$tag Installing bash...\n"
 pkg install -y bash
-mount -t fdescfs fdesc /dev/fd
-printf "fdesc /dev/fd   fdescfs   rw  0 0" >> /etc/fstab
+touch /etc/fstab
+if ! (cut -f2 /etc/fstab | grep -q -E '^/dev/fd$'); then
+  printf "$tag Mounting /dev/fd...\n"
+  mount -t fdescfs fdesc /dev/fd
+  printf "fdesc\t/dev/fd\tfdescfs\trw\t0\t0\n" >> /etc/fstab
+fi
 
 # Make primary user
 printf "$tag Making primary user...\n"
