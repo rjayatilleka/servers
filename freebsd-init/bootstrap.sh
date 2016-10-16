@@ -36,4 +36,4 @@ chsh -s /usr/local/bin/bash "$user"
 printf "$tag Making authorized key file available...\n"
 chmod +r authorized_keys
 
-printf "$tag Done with bootstrap.\n\n"
+printf "$tag Done with bootstrap.\n"
