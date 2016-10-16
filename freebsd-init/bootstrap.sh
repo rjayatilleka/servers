@@ -44,10 +44,6 @@ chmod +r authorized_keys
 printf "$tag Making /usr/local/opt...\n"
 mkdir -p /usr/local/opt
 
-# Chown /usr/local
-printf "$tag Chown /usr/local...\n"
-sudo chown -R "$user" /usr/local
-
 # Remove MOTD
 printf "$tag Removing MOTD...\n"
 rm -f /etc/motd
