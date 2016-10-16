@@ -8,3 +8,4 @@ tag="[setup_env]"
 
 printf "$tag Starting: USER=%s ...\n" "$USER"
 
+printf "$tag Done setting up primary env.\n"
