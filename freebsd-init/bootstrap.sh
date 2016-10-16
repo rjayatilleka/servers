@@ -28,8 +28,12 @@ fi
 
 # Make primary user
 printf "$tag Making primary user...\n"
-pw groupadd "$user"
-pw useradd -n "$user" -c "$name" -g "$user" -G wheel -m
+if ! (grep -q "^${user}:" /etc/group); then
+  pw groupadd "$user"
+fi
+if ! (grep -q "^${user}:" /etc/passwd); then
+  pw useradd -n "$user" -c "$name" -g "$user" -G wheel -m
+fi
 chsh -s /usr/local/bin/bash "$user"
 
 # Authorized keys readable

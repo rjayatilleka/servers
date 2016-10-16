@@ -13,7 +13,7 @@ printf "$tag Starting: bootstrap_user=%s USER=%s ...\n" "$bootstrap_user" "$USER
 # Clean home directory
 printf "$tag Cleaning home directory...\n"
 cd
-rm -rf ./*
+rm -rf * .[!.]*
 
 # Setup ssh
 printf "$tag Setting up ssh...\n"
