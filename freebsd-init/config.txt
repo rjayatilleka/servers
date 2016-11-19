@@ -1,0 +1,5 @@
+host=45.55.177.177
+bootstrap-user=freebsd
+primary-user=rjayatilleka
+primary-name=Ramith Jayatilleka
+pub-key-file=/Users/rjayatilleka/.ssh/id_rsa.pub
